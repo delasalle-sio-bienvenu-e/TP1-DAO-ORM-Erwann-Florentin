@@ -1,0 +1,11 @@
+spring:
+  # pour avoir des logs colorés dans la console
+  output.ansi.enabled: always
+  # permet à Spring de créer un bean datasource injectable dans les DAO (https://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html#Common_Attributes)
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # nombre initial de connexions dans le pool utilisé par la dataSource
+    initial-size: 5
+    url: jdbc:mysql://localhost:3306/daoormjooq?useSSL=false&serverTimezone=UTC
+    username: daoormjooquser
+    password: daoormjooqpwd
