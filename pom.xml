@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>03-dao-jooq</name>
-    <description>TP sur l&#39;utilisation de jooq dans des dao</description>
+    <description>TP sur l'utilisation de jooq dans des dao</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -45,8 +45,7 @@
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
-            <version>3.10.0</version>
-        </dependency>
+            </dependency>
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq-meta</artifactId>
@@ -66,97 +65,125 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>sql-maven-plugin</artifactId>
-                <version>1.5</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>${mysql-connector-java.version}</version>
-                    </dependency>
-                </dependencies>
+    	<pluginManagement>
+	        <plugins>
+	            <plugin>
+	                <groupId>org.springframework.boot</groupId>
+	                <artifactId>spring-boot-maven-plugin</artifactId>
+	            </plugin>
+	            
+	            <plugin>
+                <groupId>org.eclipse.m2e</groupId>
+                <artifactId>lifecycle-mapping</artifactId>
+                <version>1.0.0</version>
                 <configuration>
-                    <driver>com.mysql.cj.jdbc.Driver</driver>
-                    <url>jdbc:mysql://${jdbc.server}:${jdbc.port}/${jdbc.database}?useSSL=false&amp;serverTimezone=UTC</url>
-                    <username>${jdbc.user}</username>
-                    <password>${jdbc.password}</password>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>reset-db</id>
-                        <phase>process-test-resources</phase>
-                        <goals>
-                            <goal>execute</goal>
-                        </goals>
-                        <configuration>
-                            <url>jdbc:mysql://${jdbc.server}:${jdbc.port}/${jdbc.database}?useSSL=false&amp;serverTimezone=UTC</url>
-                            <!-- no transaction -->
-                            <autocommit>true</autocommit>
-                            <skip>false</skip>
-                            <srcFiles>
-                                <srcFile>src/main/resources/db/create_database_structure.sql</srcFile>
-                            </srcFiles>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.jooq</groupId>
-                <artifactId>jooq-codegen-maven</artifactId>
-                <version>3.10.0</version>
-
-                <executions>
-                    <!-- Generate the required class from the database -->
-                    <execution>
-                        <id>generate-classes-from-mysql</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>${mysql-connector-java.version}</version>
-                    </dependency>
-                </dependencies>
-
-                <configuration>
-                    <!-- Configure the database connection -->
-                    <jdbc>
-                        <driver>com.mysql.cj.jdbc.Driver</driver>
-                        <url>jdbc:mysql://${jdbc.server}:${jdbc.port}/${jdbc.database}?useSSL=false&amp;serverTimezone=UTC</url>
-                        <username>${jdbc.user}</username>
-                        <password>${jdbc.password}</password>
-                    </jdbc>
-
-                    <generator>
-                        <database>
-                            <!-- Configure the used database dialect -->
-                            <name>${jooq.generator.db.dialect}</name>
-                            <inputSchema>${jdbc.database}</inputSchema>
-                            <includes>.*</includes>
-                            <excludes></excludes>
-
-                        </database>
-                        <!-- Configure the target package and directory -->
-                        <target>
-                            <directory>target/generated-sources/jooq</directory>
-                            <packageName>com.mydigitalschool.dao_orm.daojooq.dao</packageName>
-                        </target>
-                    </generator>
+                    <lifecycleMappingMetadata>
+                        <pluginExecutions>
+                            <pluginExecution>
+                                <pluginExecutionFilter>
+                                    <groupId>org.codehaus.mojo</groupId>
+                                    <artifactId>aspectj-maven-plugin</artifactId>
+                                    <versionRange>[1.0,)</versionRange>
+                                    <goals>
+                                        <goal>test-compile</goal>
+                                        <goal>compile</goal>
+                                    </goals>
+                                </pluginExecutionFilter>
+                                <action>
+                                    <execute />
+                                </action>
+                            </pluginExecution>
+                        </pluginExecutions>
+                    </lifecycleMappingMetadata>
                 </configuration>
             </plugin>
-        </plugins>
+	            <plugin>
+	                <groupId>org.codehaus.mojo</groupId>
+	                <artifactId>sql-maven-plugin</artifactId>
+	                <version>1.5</version>
+	                <dependencies>
+	                    <dependency>
+	                        <groupId>mysql</groupId>
+	                        <artifactId>mysql-connector-java</artifactId>
+	                        <version>${mysql-connector-java.version}</version>
+	                    </dependency>
+	                </dependencies>
+	                <configuration>
+	                    <driver>com.mysql.cj.jdbc.Driver</driver>
+	                    <url>jdbc:mysql://${jdbc.server}:${jdbc.port}/${jdbc.database}?useSSL=false&amp;serverTimezone=UTC</url>
+	                    <username>${jdbc.user}</username>
+	                    <password>${jdbc.password}</password>
+	                </configuration>
+	                <executions>
+	                    <execution>
+	                        <id>reset-db</id>
+	                        <phase>process-test-resources</phase>
+	                        <goals>
+	                            <goal>execute</goal>
+	                        </goals>
+	                        <configuration>
+	                            <url>jdbc:mysql://${jdbc.server}:${jdbc.port}/${jdbc.database}?useSSL=false&amp;serverTimezone=UTC</url>
+	                            <!-- no transaction -->
+	                            <autocommit>true</autocommit>
+	                            <skip>false</skip>
+	                            <srcFiles>
+	                                <srcFile>src/main/resources/db/create_database_structure.sql</srcFile>
+	                            </srcFiles>
+	                        </configuration>
+	                    </execution>
+	                </executions>
+	            </plugin>
+	            <plugin>
+	                <groupId>org.jooq</groupId>
+	                <artifactId>jooq-codegen-maven</artifactId>
+	                <version>3.10.0</version>
+	
+	                <executions>
+	                    <!-- Generate the required class from the database -->
+	                    <execution>
+	                        <id>generate-classes-from-mysql</id>
+	                        <phase>generate-sources</phase>
+	                        <goals>
+	                            <goal>generate</goal>
+	                        </goals>
+	                    </execution>
+	                </executions>
+	
+	                <dependencies>
+	                    <dependency>
+	                        <groupId>mysql</groupId>
+	                        <artifactId>mysql-connector-java</artifactId>
+	                        <version>${mysql-connector-java.version}</version>
+	                    </dependency>
+	                </dependencies>
+	
+	                <configuration>
+	                    <!-- Configure the database connection -->
+	                    <jdbc>
+	                        <driver>com.mysql.cj.jdbc.Driver</driver>
+	                        <url>jdbc:mysql://${jdbc.server}:${jdbc.port}/${jdbc.database}?useSSL=false&amp;serverTimezone=UTC</url>
+	                        <username>${jdbc.user}</username>
+	                        <password>${jdbc.password}</password>
+	                    </jdbc>
+	
+	                    <generator>
+	                        <database>
+	                            <!-- Configure the used database dialect -->
+	                            <name>${jooq.generator.db.dialect}</name>
+	                            <inputSchema>${jdbc.database}</inputSchema>
+	                            <includes>.*</includes>
+	                            <excludes></excludes>
+	
+	                        </database>
+	                        <!-- Configure the target package and directory -->
+	                        <target>
+	                            <directory>target/generated-sources/jooq</directory>
+	                            <packageName>com.mydigitalschool.dao_orm.daojooq.dao</packageName>
+	                        </target>
+	                    </generator>
+	                </configuration>
+	            </plugin>
+	        </plugins>
+        </pluginManagement>
     </build>
 </project>
