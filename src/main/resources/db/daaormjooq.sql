@@ -16,39 +16,30 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `parc`
+-- Base de données :  `daoormjooq`
 --
 CREATE DATABASE IF NOT EXISTS `daoormjooq` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `daoormjooq`;
-
-DROP TABLE IF EXISTS `workers_addresses` CASCADE;
-DROP TABLE IF EXISTS `addresses` CASCADE;
-DROP TABLE IF EXISTS `workers` CASCADE;
-DROP TABLE IF EXISTS `contacts_phones` CASCADE;
-DROP TABLE IF EXISTS `contacts` CASCADE;
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `manege`
+-- Structure de la table `prix_manege`
 --
 
-DROP TABLE IF EXISTS `manege`;
-CREATE TABLE IF NOT EXISTS `manege` (
+DROP TABLE IF EXISTS `prix_manege` CASCADE;
+CREATE TABLE IF NOT EXISTS `prix_manege` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(30) NOT NULL,
-  `type` varchar(30) NOT NULL,
-  `nombrePlaces` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `id_manege` int(11) NOT NULL,
+  `prix` decimal(10,0) NOT NULL,
+  PRIMARY KEY (`id`,`id_manege`),
+  KEY `FK_prix_manege` (`id_manege`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
 
 --
 -- Structure de la table `parc_attractions`
 --
 
-DROP TABLE IF EXISTS `parc_attractions`;
+DROP TABLE IF EXISTS `parc_attractions` CASCADE;
 CREATE TABLE IF NOT EXISTS `parc_attractions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_societe` int(11) NOT NULL,
@@ -61,10 +52,25 @@ CREATE TABLE IF NOT EXISTS `parc_attractions` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `manege`
+--
+
+DROP TABLE IF EXISTS `manege` CASCADE;
+CREATE TABLE IF NOT EXISTS `manege` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(30) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `nombrePlaces` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `societe`
 --
 
-DROP TABLE IF EXISTS `societe`;
+DROP TABLE IF EXISTS `societe` CASCADE;
 CREATE TABLE IF NOT EXISTS `societe` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(30) NOT NULL,
@@ -81,6 +87,13 @@ CREATE TABLE IF NOT EXISTS `societe` (
 --
 ALTER TABLE `parc_attractions`
   ADD CONSTRAINT `FK_societe` FOREIGN KEY (`id_societe`) REFERENCES `societe` (`id`) ON DELETE CASCADE;
+
+--
+-- Index pour la table `prix_manege`
+--
+ALTER TABLE `prix_manege`
+  ADD CONSTRAINT `FK_prix_manege` FOREIGN KEY (`id_manege`) REFERENCES `manege` (`id`) ON DELETE CASCADE;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
