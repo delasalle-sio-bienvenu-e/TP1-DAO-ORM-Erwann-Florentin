@@ -1,6 +1,6 @@
 package com.mydigitalschool.dao_orm.daojooq.dao;
 
-import com.mydigitalschool.dao_orm.daojooq.business.Entity1;
+import com.mydigitalschool.dao_orm.daojooq.business.manege;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
@@ -15,7 +15,7 @@ public class Entity1Dao {
     @Autowired
     DataSource dataSource;
 
-    public Entity1 saveEntity1(Entity1 entity1) throws SQLException {
+    public manege saveEntity1(manege entity1) throws SQLException {
         // TODO à implémenter
         DSLContext dbDSL = DSL.using(dataSource.getConnection(), SQLDialect.MYSQL);
         // voir https://www.jooq.org/doc/3.3/manual/sql-building/sql-statements/insert-statement/
@@ -23,7 +23,7 @@ public class Entity1Dao {
         throw new UnsupportedOperationException();
     }
 
-    public Entity1 getEntity1(Long id) {
+    public manege getEntity1(Long id) {
         // TODO à implémenter
         throw new UnsupportedOperationException();
     }

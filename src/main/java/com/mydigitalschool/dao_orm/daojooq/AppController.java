@@ -1,6 +1,6 @@
 package com.mydigitalschool.dao_orm.daojooq;
 
-import com.mydigitalschool.dao_orm.daojooq.business.Entity1;
+import com.mydigitalschool.dao_orm.daojooq.business.manege;
 import com.mydigitalschool.dao_orm.daojooq.dao.Entity1Dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,15 +17,15 @@ public class AppController {
 //    @Autowired
 //    Entity2Dao entity2Dao;
 
-    public Entity1 saveEntity1(Entity1 entity1) throws SQLException {
+    public manege saveEntity1(manege entity1) throws SQLException {
         return entity1Dao.saveEntity1(entity1);
     }
 
-    public Entity1 getEntity1(Long id) throws SQLException {
+    public manege getEntity1(Long id) throws SQLException {
         return entity1Dao.getEntity1(id);
     }
 
-    public <T> List<Entity1> getEntities1(T property1, int nbValuesToSkip, int nbValuesToReturn) {
+    public <T> List<manege> getEntities1(T property1, int nbValuesToSkip, int nbValuesToReturn) {
         // TODO à implémenter
         throw new UnsupportedOperationException();
     }
