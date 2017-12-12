@@ -1,4 +1,0 @@
-CREATE USER "daoormjooquser"@"localhost";
-SET password FOR "daoormjooquser"@"localhost" = password('daoormjooqpwd');
-CREATE DATABASE daoormjooq
-GRANT ALL ON daoormjooq.* TO "daoormjooquser"@"localhost";
