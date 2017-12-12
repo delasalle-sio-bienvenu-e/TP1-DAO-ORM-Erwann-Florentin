@@ -21,7 +21,7 @@ public class ManegeDao {
         DSLContext dbDSL = DSL.using(dataSource.getConnection(), SQLDialect.MYSQL);
         // voir https://www.jooq.org/doc/3.3/manual/sql-building/sql-statements/insert-statement/
         dbDSL.insertInto(manege, manege.nom, manege.type, manege.nombrePlaces).values("grande roue", "familliale", 100);
-        // dbDSL.insertInto(Entites1, ...).values(...)...
+
         throw new UnsupportedOperationException();
     }
 
