@@ -1,10 +1,9 @@
 package com.mydigitalschool.dao_orm.daojooq.business;
 
-public class Components { //tarif_parc
-    public Long id;
-    public Long entity1Id;
+import com.mydigitalschool.dao_orm.daojooq.dao.tables.ParcAttractions;
 
-    //... les deux propriétés min
-    // public ? property1;
-    // public ? property2;
+public class Components { //tarif_parc
+    public long id;
+    public long idParc;
+    public float tarif;
 }
