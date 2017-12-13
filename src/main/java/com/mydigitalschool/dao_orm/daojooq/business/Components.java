@@ -1,6 +1,6 @@
 package com.mydigitalschool.dao_orm.daojooq.business;
 
-public class Components {
+public class Components { //tarif_parc
     public Long id;
     public Long entity1Id;
 
