@@ -21,7 +21,7 @@ public class AppController {
         return entity1Dao.saveEntity1(entity1);
     }
 
-    public Entity1 getEntity1(Long id) throws SQLException {
+    public Entity1 getEntity1(int id) throws SQLException {
         return entity1Dao.getEntity1(id);
     }
 
