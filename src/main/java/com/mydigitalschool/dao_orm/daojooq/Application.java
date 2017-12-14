@@ -30,6 +30,9 @@ public class Application {
         Entity1 entity1 = new Entity1();
         // définir les propriétés et les composants liés
         assert Objects.isNull(entity1.id);
+        entity1.id_societe = 1;
+        entity1.nom = "ok";
+        entity1.taille= 300;
         Entity1 savedEntity1 = appController.saveEntity1(entity1);
 
         // vérification que les clefs primaires sont bien renseignées
