@@ -1,6 +1,7 @@
 package com.mydigitalschool.dao_orm.daojooq.dao;
 
 import com.mydigitalschool.dao_orm.daojooq.business.Entity2;
+import com.mydigitalschool.dao_orm.daojooq.dao.tables.ParcAttractions;
 import com.mydigitalschool.dao_orm.daojooq.dao.tables.Societe;
 
 import org.jooq.DSLContext;
@@ -39,5 +40,12 @@ public class Entity2Dao {
         }
 		return null;
         
+    }
+    
+    public boolean deletedEntity2(Integer id) throws SQLException {
+        Societe Societe = new Societe();
+        DSLContext dbDSL = DSL.using(dataSource.getConnection(), SQLDialect.MYSQL);
+        dbDSL.delete(Societe).where(Societe.ID.eq(id)).execute();
+		return true;
     }
 }
