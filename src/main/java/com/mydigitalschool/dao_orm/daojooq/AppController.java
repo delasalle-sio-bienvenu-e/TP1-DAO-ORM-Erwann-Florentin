@@ -1,7 +1,9 @@
 package com.mydigitalschool.dao_orm.daojooq;
 
+import com.mydigitalschool.dao_orm.daojooq.business.Components;
 import com.mydigitalschool.dao_orm.daojooq.business.Entity1;
 import com.mydigitalschool.dao_orm.daojooq.business.Entity2;
+import com.mydigitalschool.dao_orm.daojooq.dao.ComponentDao;
 import com.mydigitalschool.dao_orm.daojooq.dao.Entity1Dao;
 import com.mydigitalschool.dao_orm.daojooq.dao.Entity2Dao;
 
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,6 +22,9 @@ public class AppController {
 
     @Autowired
     Entity2Dao entity2Dao;
+    
+    @Autowired
+    ComponentDao componentDao;
 
     public Entity1 saveEntity1(Entity1 entity1) throws SQLException {
         return entity1Dao.saveEntity1(entity1);
@@ -47,6 +53,20 @@ public class AppController {
     }
     
     public Boolean deleteEntity2(int id) throws SQLException {
+        return entity2Dao.deleteEntity2(id);
+    }
+    
+    public Components saveComponents(Components component) throws SQLException {
+        return componentDao.saveComponents(component);
+    }
+
+    public List<Components> getComponentsFromEntity1(int id) throws SQLException {
+    	List<Components> list = new ArrayList();
+        list = componentDao.getComponentsFromEntity1(id);
+        return list;
+    }
+    
+    public Boolean deleteComponent(int id) throws SQLException {
         return entity2Dao.deleteEntity2(id);
     }
 }
