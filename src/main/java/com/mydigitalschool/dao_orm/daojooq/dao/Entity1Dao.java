@@ -23,7 +23,7 @@ public class Entity1Dao {
         ParcAttractions ParcAttractions = new ParcAttractions();
         DSLContext dbDSL = DSL.using(dataSource.getConnection(), SQLDialect.MYSQL);
         // voir https://www.jooq.org/doc/3.3/manual/sql-building/sql-statements/insert-statement/
-        dbDSL.insertInto(ParcAttractions).values(entite1.id, entite1.id_societe, entite1.nom, entite1.taille);
+        dbDSL.insertInto(ParcAttractions, ParcAttractions.ID_SOCIETE, ParcAttractions.NOM, ParcAttractions.TAILLE).values(entite1.id_societe, entite1.nom, entite1.taille);
 		return entite1;
     }
 
