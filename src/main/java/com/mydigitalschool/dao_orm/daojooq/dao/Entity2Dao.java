@@ -42,7 +42,7 @@ public class Entity2Dao {
         
     }
     
-    public boolean deletedEntity2(Integer id) throws SQLException {
+    public boolean deleteEntity2(Integer id) throws SQLException {
         Societe Societe = new Societe();
         DSLContext dbDSL = DSL.using(dataSource.getConnection(), SQLDialect.MYSQL);
         dbDSL.delete(Societe).where(Societe.ID.eq(id)).execute();

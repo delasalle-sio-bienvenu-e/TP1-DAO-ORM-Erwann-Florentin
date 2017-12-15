@@ -1,7 +1,10 @@
 package com.mydigitalschool.dao_orm.daojooq;
 
 import com.mydigitalschool.dao_orm.daojooq.business.Entity1;
+import com.mydigitalschool.dao_orm.daojooq.business.Entity2;
 import com.mydigitalschool.dao_orm.daojooq.dao.Entity1Dao;
+import com.mydigitalschool.dao_orm.daojooq.dao.Entity2Dao;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +39,7 @@ public class AppController {
     }
     
     public Entity2 saveEntity2(Entity2 entity2) throws SQLException {
-        return entity1Dao.saveEntity2(entity2);
+        return entity2Dao.saveEntity2(entity2);
     }
 
     public Entity2 getEntity2(int id) throws SQLException {
