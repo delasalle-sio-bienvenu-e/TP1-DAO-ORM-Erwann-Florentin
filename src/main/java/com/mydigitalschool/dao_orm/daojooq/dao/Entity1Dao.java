@@ -41,4 +41,11 @@ public class Entity1Dao {
 		return null;
         
     }
+    
+    public boolean deletedEntity1(Integer id) throws SQLException {
+        ParcAttractions ParcAttractions = new ParcAttractions();
+        DSLContext dbDSL = DSL.using(dataSource.getConnection(), SQLDialect.MYSQL);
+        dbDSL.delete(ParcAttractions).where(ParcAttractions.ID.eq(id)).execute();
+		return true;
+    }
 }

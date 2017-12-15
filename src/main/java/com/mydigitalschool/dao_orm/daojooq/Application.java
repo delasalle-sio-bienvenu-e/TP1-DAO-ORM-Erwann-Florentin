@@ -43,8 +43,8 @@ public class Application {
         // savedEntity1.composants.forEach(composant -> assert !Objects.isNull(composant.id));
     }
 
-    public static void elaborationDaoEntity1Select(AppController appController) throws SQLException {
-	    // TODO à implémenter
-	    throw new UnsupportedOperationException();
+    public static void elaborationDaoEntity1Select(AppController appController, Integer id) throws SQLException {
+    	
+    	Entity1 selectedEntity1 = appController.getEntity1(id);
     }
 }
