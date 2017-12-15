@@ -27,7 +27,7 @@ public class Entity2Dao {
 		return entite2;
     }
 
-    public Entity2 getEntity1(Integer id) throws SQLException {
+    public Entity2 getEntity2(Integer id) throws SQLException {
     	Societe societe = new Societe();
         DSLContext dbDSL = DSL.using(dataSource.getConnection(), SQLDialect.MYSQL);
         Result<Record> result = dbDSL.select().from(societe).where(societe.ID.eq(id)).fetch();
