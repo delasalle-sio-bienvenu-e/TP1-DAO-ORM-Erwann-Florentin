@@ -38,7 +38,7 @@ public class Entity1Dao {
             entite1.nom = r.getValue(ParcAttractions.NOM);
             entite1.taille = r.getValue(ParcAttractions.TAILLE);
         }
-		return null;
+		return entite1;
         
     }
     

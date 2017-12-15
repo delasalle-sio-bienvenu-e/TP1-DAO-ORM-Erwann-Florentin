@@ -5,5 +5,5 @@ import com.mydigitalschool.dao_orm.daojooq.dao.tables.ParcAttractions;
 public class Components { //tarif_parc
     public Integer id;
     public Integer idParc;
-    public float tarif;
+    public Long tarif;
 }

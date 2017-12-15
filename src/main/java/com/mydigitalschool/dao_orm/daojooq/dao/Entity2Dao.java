@@ -38,7 +38,7 @@ public class Entity2Dao {
             entite2.nom = r.getValue(societe.NOM);
             entite2.adresse = r.getValue(societe.ADRESSE);
         }
-		return null;
+		return entite2;
         
     }
     
